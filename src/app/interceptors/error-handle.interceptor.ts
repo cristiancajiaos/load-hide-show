@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -11,7 +12,9 @@ import { catchError, Observable, throwError } from 'rxjs';
 @Injectable()
 export class ErrorHandleInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(
+    private toastr: ToastrService
+  ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
@@ -23,6 +26,7 @@ export class ErrorHandleInterceptor implements HttpInterceptor {
           errorMsg = `Error status: ${error.status}, Error message: ${error.message}`;
         }
 
+        this.toastr.error(errorMsg);
         return throwError(() => Error(errorMsg));
       })
     );
