@@ -1,3 +1,4 @@
+import { HandleRequestInterceptor } from './interceptors/handle-request.interceptor';
 import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,7 +15,7 @@ import { ErrorHandleInterceptor } from './interceptors/error-handle.interceptor'
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +32,10 @@ import { ErrorHandleInterceptor } from './interceptors/error-handle.interceptor'
   }, {
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorHandleInterceptor,
+    multi: true
+  }, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HandleRequestInterceptor,
     multi: true
   }],
   bootstrap: [AppComponent]

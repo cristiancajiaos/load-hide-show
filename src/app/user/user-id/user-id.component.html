@@ -1,11 +1,8 @@
-<p>ID: {{id}}</p>
+<app-loading></app-loading>
 
 <div *ngIf="(user$ | async) as user">
-  <div *ngIf="user.id != 0; else notFound">
+  <div *ngIf="user.id != 0">
     <p>User: {{user | json}}</p>
   </div>
 </div>
 
-<ng-template #notFound>
-  <p>Not found</p>
-</ng-template>
