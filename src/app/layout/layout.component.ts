@@ -9,8 +9,6 @@ import { User } from '../interfaces/user';
 })
 export class LayoutComponent implements OnInit {
 
-  foo: User = DEFAULT_USER;
-
   constructor() { }
 
   ngOnInit(): void {
