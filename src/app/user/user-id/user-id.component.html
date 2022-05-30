@@ -1,1 +1,7 @@
 <p>ID: {{id}}</p>
+
+<div *ngIf="currentUser.id != 0">
+  <p>Current User: {{currentUser | json}}</p>
+</div>
+
+

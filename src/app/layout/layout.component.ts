@@ -1,4 +1,3 @@
-import { DEFAULT_USER } from './../constants/DEFAULT_USER';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../interfaces/user';
 
